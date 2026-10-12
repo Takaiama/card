@@ -1,1 +1,2 @@
-<img src="fot.png" alt="Takaiama" width="200">
+  <img src="fot.png" alt="Takaiama" width="600">
+</p>

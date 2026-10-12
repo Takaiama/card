@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Takaiama</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        /* Фото профиля */
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 24px;
+            display: block;
+            border: 2px solid #333;
+        }
+
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 36px;
+        }
+
+        /* Обертка для боковых блоков и кнопок */
+        .main-content {
+            display: flex;
+            gap: 20px;
+            align-items: stretch;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        /* Боковые блоки с пунктирной рамкой */
+        .side-box {
+            flex: 1;
+            border: 2px dashed #555;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 15px;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .side-box .arrow {
+            font-size: 22px;
+            margin-top: 6px;
+            color: #aaa;
+        }
+
+        .links {
+            flex: 1;
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            padding: 16px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+            background-color: #111;
+            border: 1px solid #222;
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: #1a1a1a;
+            border-color: #444;
+            transform: translateY(-2px);
+        }
+
+        .btn i {
+            font-size: 20px;
+            width: 24px;
+            text-align: center;
+        }
+
+        /* Цвета иконок */
+        .btn .fa-telegram { color: #26A5E4; }
+        .btn .fa-vk { color: #0077FF; }
+        .btn .fa-youtube { color: #FF0000; }
+        .btn .fa-tv { color: #fff; }
+        .btn .fa-book { color: #F5A623; }
+        .btn .fa-twitch { color: #9146FF; }
+        .btn .fa-gamepad { color: #FF5500; } /* FACEIT */
+        .btn .fa-steam { color: #66c0f4; }   /* Steam */
+        .btn .fa-instagram { color: #E4405F; } /* Instagram */
+        .btn .fa-discord { color: #5865F2; } /* Discord */
+        .btn .fa-heart { color: #F5661F; }   /* Boosty */
+
+        /* Секция с QR-кодом */
+        .qr-section {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .qr-section img {
+            width: 160px;
+            height: 160px;
+            border-radius: 12px;
+            background-color: #fff;
+            padding: 10px;
+            object-fit: contain;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 12px;
+            color: #444;
+        }
+
+        /* Адаптивность для мобильных */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .side-box {
+                width: 100%;
+                max-width: 320px;
+                padding: 15px;
+            }
+            .links {
+                width: 100%;
+                max-width: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Фото профиля. Замените путь-к-фото.jpg на имя вашего файла -->
+        <img src="путь-к-фото.jpg" alt="Takaiama" class="avatar">
+
+        <h1>Takaiama</h1>
+        <p class="subtitle">Все ссылки — в одном месте</p>
+
+        <!-- Блок с кнопками и боковыми панелями -->
+        <div class="main-content">
+            <!-- Левый блок -->
+            <div class="side-box">
+                <span>Чтобы было удобно</span>
+                <span class="arrow">-&gt;</span>
+            </div>
+
+            <!-- Центральный блок с кнопками -->
+            <div class="links">
+                <a href="https://t.me/takaiama" class="btn" target="_blank" rel="noopener">
+                    <i class="fab fa-telegram"></i> Telegram
+                </a>
+
+                <a href="https://vk.ru/takaiiama" class="btn" target="_blank" rel="noopener">
+                    <i class="fab fa-vk"></i> VK
+                </a>
+
+                <a href="https://www.youtube.com/@KeitaroTakaiama" class="btn" target="_blank" rel="noopener">
+                    <i class="fab fa-youtube"></i> YouTube
+                </a>
+
+                <a href="https://www.instagram.com/takaiama_blet?rpxt=czEwajQ5c3lyM3Qy" class="btn" target="_blank" rel="noopener">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+
+                <a href="https://discord.com/users/293808149914189826" class="btn" target="_blank" rel="noopener">
+                    <i class="fab fa-discord"></i> Discord
+                </a>
+
+                <a href="https://shikimori.io/TK_" class="btn" target="_blank" rel="noopener">
+                    <i class="fas fa-tv"></i> Shikimori
+                </a>
+
+                <a href="https://www.grouvee.com/user/103063-Takaiama/shelves/" class="btn" target="_blank" rel="noopener">
+                    <i class="fas fa-book"></i> Grouvee
+                </a>
+
+                <a href="https://www.twitch.tv/takaiama" class="btn" target="_blank" rel="noopener">
+                    <i class="fab fa-twitch"></i> Twitch
+                </a>
+
+                <a href="https://www.faceit.com/en/players/Takaiama" class="btn" target="_blank" rel="noopener">
+                    <i class="fas fa-gamepad"></i> FACEIT
+                </a>
+
+                <a href="https://steamcommunity.com/profiles/76561198129549238" class="btn" target="_blank" rel="noopener">
+                    <i class="fab fa-steam"></i> Steam
+                </a>
+
+                <a href="https://boosty.to/takaiama" class="btn" target="_blank" rel="noopener">
+                    <i class="fas fa-heart"></i> Boosty
+                </a>
+            </div>
+
+            <!-- Правый блок -->
+            <div class="side-box">
+                <span>А может и нет</span>
+                <span class="arrow">&lt;-</span>
+            </div>
+        </div>
+
+        <!-- QR-код внизу -->
+        <div class="qr-section">
+            <img src="qr.png" alt="QR-код">
+        </div>
+
+        <footer>
+            Takaiama.ru
+        </footer>
+    </div>
+</body>
+</html>

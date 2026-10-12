@@ -1,1 +1,1 @@
-![Uploading image.png…]()
+(https://2.downloader.disk.yandex.ru/preview/a198de508419ad56c52dec9638af42917b9b450008bddc688383d556bacb8353/inf/hAi8M9tfQxkNFiC-M528rTMoPuFL7FHsmLPeqcVp5W8rmKe91H10aRKhSit9UXLZr-DuRhTVYfApx3b6wrGzvA%3D%3D?uid=42659338&filename=etxdrytyu.png&disposition=inline&hash=&limit=0&content_type=image%2Fpng&owner_uid=42659338&tknv=v3&is_direct_zip_experiment=1&size=2545x1296)

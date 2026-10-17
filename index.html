@@ -13,7 +13,7 @@
         }
 
         html, body {
-            height: 100%;
+            min-height: 100%; /* было height: 100% */
         }
 
         body {
@@ -22,8 +22,8 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            align-items: flex-start; /* было center */
+            min-height: 100vh
             padding: 14px;
         }
 
@@ -31,6 +31,7 @@
             width: 100%;
             max-width: 800px;
             text-align: center;
+            margin: auto; /* добавлено — центрирует по вертикали, когда места хватает */
         }
 
         /* Фото профиля */
@@ -244,6 +245,10 @@
 
             <!-- Центральный блок с кнопками -->
             <div class="links">
+
+                <a href="https://resume.takaiama.ru/" class="btn" target="_blank" rel="noopener">
+                    <i class="fas fa-file-alt" style="color: #fff;"></i> Резюме
+                </a>
                 
                 <a href="https://t.me/takaiama" class="btn" target="_blank" rel="noopener">
                     <i class="fab fa-telegram"></i> Telegram

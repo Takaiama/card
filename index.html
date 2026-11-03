@@ -13,7 +13,7 @@
         }
 
         html, body {
-            min-height: 100%; /* было height: 100% */
+            min-height: 100%;
         }
 
         body {
@@ -22,16 +22,19 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
-            align-items: flex-start; /* было center */
+            align-items: flex-start;
             min-height: 100vh;
             padding: 14px;
+            overflow: hidden; /* Предотвращает появление полос прокрутки от летающей кнопки */
         }
 
         .container {
             width: 100%;
             max-width: 800px;
             text-align: center;
-            margin: auto; /* добавлено — центрирует по вертикали, когда места хватает */
+            margin: auto; 
+            position: relative;
+            z-index: 10; /* Контент находится над фоном */
         }
 
         /* Фото профиля */
@@ -112,7 +115,7 @@
             color: #fff;
             background-color: #111;
             border: 1px solid #222;
-            transition: all 0.2s ease;
+            transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
         }
 
         .btn:hover {
@@ -147,7 +150,6 @@
         .btn .fa-discord { color: #5865F2; }
         .btn .fa-github { color: #fff; }
         .btn .fa-heart { color: #F5661F; }
-        
         .btn .fa-book-open { color: #C1272D; }
 
         /* Секция с QR-кодом */
@@ -172,21 +174,33 @@
             color: #444;
         }
 
+        /* === СТИЛЬ ДЛЯ ПЛАВАЮЩЕЙ КНОПКИ === */
+        .floating-btn {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: auto; /* Чтобы кнопка не растягивалась на весь экран */
+            z-index: 9999;
+            will-change: transform;
+            /* Выделяем кнопку тенью, чтобы она читалась поверх контента */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), 0 0 0 1px #444; 
+            background-color: #1a1a1a;
+            border-color: #555;
+        }
+
+        .floating-btn:hover {
+            background-color: #222;
+            box-shadow: 0 4px 20px rgba(155, 89, 182, 0.6), 0 0 0 1px #9b59b6;
+            border-color: #9b59b6;
+            transform: translateY(-1px);
+        }
+
         /* Адаптивность для мобильных */
         @media (max-width: 768px) {
-            .main-content {
-                flex-direction: column;
-                align-items: center;
-            }
-            .side-box {
-                width: 100%;
-                max-width: 310px;
-                padding: 12px;
-            }
-            .links {
-                width: 100%;
-                max-width: 310px;
-            }
+            .main-content { flex-direction: column; align-items: center; }
+            .side-box { width: 100%; max-width: 310px; padding: 12px; }
+            .links { width: 100%; max-width: 310px; }
+            .floating-btn { font-size: 13px; padding: 8px 12px; }
         }
 
         /* Для невысоких экранов */
@@ -196,46 +210,28 @@
             .subtitle { margin-bottom: 14px; }
             .btn { padding: 8px 13px; font-size: 13.5px; }
             .btn i { font-size: 16px; width: 20px; }
+            .btn .btn-icon { width: 18px; height: 18px; }
             .links { gap: 6px; }
             .qr-section img { width: 100px; height: 100px; }
             .main-content { margin-bottom: 14px; }
             .side-box { padding: 12px; font-size: 13px; }
         }
-
-        /* Для очень невысоких экранов */
-        @media (max-height: 700px) {
-            .avatar { width: 64px; height: 64px; margin-bottom: 8px; }
-            h1 { font-size: 18px; margin-bottom: 3px; }
-            .subtitle { font-size: 11px; margin-bottom: 10px; }
-            .btn { padding: 6px 11px; font-size: 12.5px; }
-            .btn i { font-size: 14px; width: 18px; }
-            .links { gap: 5px; }
-            .qr-section img { width: 85px; height: 85px; }
-            .main-content { margin-bottom: 10px; }
-            footer { margin-top: 6px; }
-        }
     </style>
-
-    <!-- Основная иконка для браузера -->
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-
-<!-- Иконка для iPhone / iPad (когда добавляют сайт на главный экран) -->
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-
-<!-- Иконка для Android -->
-<link rel="manifest" href="site.webmanifest">
-    
 </head>
 <body>
+    <!-- Плавающая КНОПКА с вашей иконкой icon-192.png -->
+    <a href="https://256lvl.com" target="_blank" rel="noopener" class="btn floating-btn" id="floatingBtn">
+        <img src="icon-192.png" alt="256lvl" class="btn-icon" style="border-radius: 4px;">
+        256lvl.com
+    </a>
+
     <div class="container">
-        <!-- Фото профиля. Замените путь-к-фото.jpg на имя вашего файла -->
+        <!-- Ваше фото профиля -->
         <img src="qr.jpg" alt="Takaiama" class="avatar">
 
         <h1>Takaiama</h1>
         <p class="subtitle">Все ссылки — в одном месте</p>
 
-        <!-- Блок с кнопками и боковыми панелями -->
         <div class="main-content">
             <!-- Левый блок -->
             <div class="side-box">
@@ -245,7 +241,6 @@
 
             <!-- Центральный блок с кнопками -->
             <div class="links">
-
                 <a href="https://resume.takaiama.ru/" class="btn" target="_blank" rel="noopener">
                     <i class="fas fa-file-alt" style="color: #fff;"></i> Резюме
                 </a>
@@ -305,7 +300,6 @@
                 <a href="https://www.litres.ru/author/andrei-viatich-34076923/" class="btn" target="_blank" rel="noopener">
                     <i class="fas fa-book-open"></i> ЛитРес
                 </a>
-                
             </div>
 
             <!-- Правый блок -->
@@ -324,5 +318,85 @@
             Takaiama.ru
         </footer>
     </div>
+
+    <!-- Скрипт случайного плавного движения по всему экрану -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const btn = document.getElementById('floatingBtn');
+            
+            // Начальные координаты (центр экрана)
+            let posX = window.innerWidth / 2;
+            let posY = window.innerHeight / 2;
+            
+            // Векторы скорости
+            let velX = 0;
+            let velY = 0;
+            
+            // Координаты текущей цели
+            let targetX = posX;
+            let targetY = posY;
+
+            // Настройки физики
+            const maxSpeed = 2.5;      // Максимальная скорость (чем больше, тем быстрее летает)
+            const acceleration = 0.03; // Ускорение к цели (плавность)
+            const friction = 0.98;     // Трение (плавное затухание)
+            const targetRadius = 150;  // Радиус, при достижении которого выбирается новая цель
+
+            // Функция выбора новой случайной точки на экране
+            function pickNewTarget() {
+                const padding = 80; // Отступы от краев, чтобы кнопка не застревала
+                targetX = padding + Math.random() * (window.innerWidth - padding * 2);
+                targetY = padding + Math.random() * (window.innerHeight - padding * 2);
+            }
+
+            pickNewTarget(); // Выбираем первую цель при старте
+
+            function animate() {
+                // Вектор до цели
+                let dx = targetX - posX;
+                let dy = targetY - posY;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+
+                // Если приблизились к цели, выбираем новую
+                if (distance < targetRadius) {
+                    pickNewTarget();
+                }
+
+                // Двигаемся к цели с ускорением
+                if (distance > 0) {
+                    velX += (dx / distance) * acceleration;
+                    velY += (dy / distance) * acceleration;
+                }
+
+                // Применяем трение
+                velX *= friction;
+                velY *= friction;
+
+                // Ограничиваем скорость
+                const currentSpeed = Math.sqrt(velX * velX + velY * velY);
+                if (currentSpeed > maxSpeed) {
+                    velX = (velX / currentSpeed) * maxSpeed;
+                    velY = (velY / currentSpeed) * maxSpeed;
+                }
+
+                // Сдвигаем позицию
+                posX += velX;
+                posY += velY;
+
+                // Применяем смещение (transform работает быстрее, чем left/top)
+                btn.style.transform = `translate(${posX}px, ${posY}px)`;
+
+                // Повторяем цикл на следующем кадре
+                requestAnimationFrame(animate);
+            }
+
+            animate(); // Запуск анимации
+
+            // Если окно меняет размер, обновляем границы цели
+            window.addEventListener('resize', () => {
+                pickNewTarget();
+            });
+        });
+    </script>
 </body>
 </html>

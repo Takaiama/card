@@ -25,7 +25,10 @@
             align-items: flex-start;
             min-height: 100vh;
             padding: 14px;
-            overflow: hidden; /* Предотвращает появление полос прокрутки от летающей кнопки */
+            
+            /* ИСПРАВЛЕНИЕ ЗДЕСЬ */
+            overflow-x: hidden; /* Запрещаем только горизонтальную прокрутку */
+            overflow-y: auto;   /* Разрешаем вертикальную прокрутку */
         }
 
         .container {
@@ -34,7 +37,7 @@
             text-align: center;
             margin: auto; 
             position: relative;
-            z-index: 10; /* Контент находится над фоном */
+            z-index: 10; 
         }
 
         /* Фото профиля */
@@ -179,10 +182,9 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: auto; /* Чтобы кнопка не растягивалась на весь экран */
+            width: auto; 
             z-index: 9999;
             will-change: transform;
-            /* Выделяем кнопку тенью, чтобы она читалась поверх контента */
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8), 0 0 0 1px #444; 
             background-color: #1a1a1a;
             border-color: #555;
@@ -324,75 +326,59 @@
         document.addEventListener("DOMContentLoaded", function() {
             const btn = document.getElementById('floatingBtn');
             
-            // Начальные координаты (центр экрана)
             let posX = window.innerWidth / 2;
             let posY = window.innerHeight / 2;
-            
-            // Векторы скорости
             let velX = 0;
             let velY = 0;
-            
-            // Координаты текущей цели
             let targetX = posX;
             let targetY = posY;
 
-            // Настройки физики
-            const maxSpeed = 2.5;      // Максимальная скорость (чем больше, тем быстрее летает)
-            const acceleration = 0.03; // Ускорение к цели (плавность)
-            const friction = 0.98;     // Трение (плавное затухание)
-            const targetRadius = 150;  // Радиус, при достижении которого выбирается новая цель
+            const maxSpeed = 2.5;      
+            const acceleration = 0.03; 
+            const friction = 0.98;     
+            const targetRadius = 150;  
 
-            // Функция выбора новой случайной точки на экране
             function pickNewTarget() {
-                const padding = 80; // Отступы от краев, чтобы кнопка не застревала
+                const padding = 80; 
                 targetX = padding + Math.random() * (window.innerWidth - padding * 2);
                 targetY = padding + Math.random() * (window.innerHeight - padding * 2);
             }
 
-            pickNewTarget(); // Выбираем первую цель при старте
+            pickNewTarget(); 
 
             function animate() {
-                // Вектор до цели
                 let dx = targetX - posX;
                 let dy = targetY - posY;
                 let distance = Math.sqrt(dx * dx + dy * dy);
 
-                // Если приблизились к цели, выбираем новую
                 if (distance < targetRadius) {
                     pickNewTarget();
                 }
 
-                // Двигаемся к цели с ускорением
                 if (distance > 0) {
                     velX += (dx / distance) * acceleration;
                     velY += (dy / distance) * acceleration;
                 }
 
-                // Применяем трение
                 velX *= friction;
                 velY *= friction;
 
-                // Ограничиваем скорость
                 const currentSpeed = Math.sqrt(velX * velX + velY * velY);
                 if (currentSpeed > maxSpeed) {
                     velX = (velX / currentSpeed) * maxSpeed;
                     velY = (velY / currentSpeed) * maxSpeed;
                 }
 
-                // Сдвигаем позицию
                 posX += velX;
                 posY += velY;
 
-                // Применяем смещение (transform работает быстрее, чем left/top)
                 btn.style.transform = `translate(${posX}px, ${posY}px)`;
 
-                // Повторяем цикл на следующем кадре
                 requestAnimationFrame(animate);
             }
 
-            animate(); // Запуск анимации
+            animate(); 
 
-            // Если окно меняет размер, обновляем границы цели
             window.addEventListener('resize', () => {
                 pickNewTarget();
             });

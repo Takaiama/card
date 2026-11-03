@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Takaiama</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- ВОЗВРАЩАЕМ ИКОНКИ САЙТА (FAVICON) -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+
     <style>
         * {
             margin: 0;
@@ -26,9 +33,9 @@
             min-height: 100vh;
             padding: 14px;
             
-            /* ИСПРАВЛЕНИЕ ЗДЕСЬ */
-            overflow-x: hidden; /* Запрещаем только горизонтальную прокрутку */
-            overflow-y: auto;   /* Разрешаем вертикальную прокрутку */
+            /* Прокрутка страницы работает */
+            overflow-x: hidden; 
+            overflow-y: auto;   
         }
 
         .container {
